@@ -17,25 +17,29 @@ public class BurgerTest {
 
     @Test
     public void addIngredientAddedIngredientToTheList() {
+        int firstIndexOfList = 1;
         burger.addIngredient(ingredient);
-        assertEquals(1, burger.ingredients.size());
+        assertEquals(firstIndexOfList, burger.ingredients.size());
     }
 
     @Test
     public void removeIngredientRemoveIngredientFromList() {
+        int zeroIndexOfList = 0;
         burger.addIngredient(ingredient);
-        burger.removeIngredient(0);
-        assertEquals(0, burger.ingredients.size());
+        burger.removeIngredient(zeroIndexOfList);
+        assertEquals(zeroIndexOfList, burger.ingredients.size());
     }
 
     @Test
     public void moveIngredientMovedIngredientInList() {
+        int zeroIndexOfList = 0;
+        int firstIndexOfList = 1;
         Ingredient spyIngredient = Mockito.spy(new Ingredient(IngredientType.FILLING,
                 "sausage", 300));
         burger.addIngredient(spyIngredient);
         burger.addIngredient(ingredient);
-        burger.moveIngredient(0,1);
-        assertEquals(burger.ingredients.get(1), spyIngredient);
+        burger.moveIngredient(zeroIndexOfList,firstIndexOfList);
+        assertEquals(burger.ingredients.get(firstIndexOfList), spyIngredient);
     }
 
     @Test
